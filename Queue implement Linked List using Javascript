@@ -1,0 +1,50 @@
+//Using Queue implement in Linked List
+class QueueNode
+{
+    constructor(key)
+    {
+        this.key = key;
+        this.next = null;
+    }
+}
+let Front = null, Rear = null;
+function Enqueue(key)
+{    
+        let tmp = new QueueNode(key);
+        if (Rear == null) 
+        {
+            Front = Rear = tmp;
+            return;
+        }
+        Rear.next = tmp;
+        Rear = tmp;
+} 
+function Dequeue()
+{
+        if (Front == null)
+            return;
+        let tmp = Front;
+        Front = Front.next;
+        if (Front == null)
+            Rear = null;
+} 
+Enqueue(100);
+Enqueue(200);
+Dequeue();
+Dequeue();
+Enqueue(300);
+Enqueue(400);
+Enqueue(500);
+Enqueue(600);
+Enqueue(700);
+Dequeue();
+Dequeue();
+Dequeue();
+console.log("Implementation queue using Linked List:");
+console.log("Queue Front:" + Front.key);
+console.log("Queue Rear:" + Rear.key);
+//Output:
+//Implementation queue using Linked List:
+//Queue Front:600
+//Queue Rear:700
+ 
