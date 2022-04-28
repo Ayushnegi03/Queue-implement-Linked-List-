@@ -1,0 +1,47 @@
+#Queue implementation of Linked List
+class Node:     
+    def __init__(self, Data):
+        self.Data = Data
+        self.Next = None
+class Queue:   
+    def __init__(self):
+        self.front = self.rear = None
+    def isEmpty(self):
+        return self.front == None
+    def EnQueue(self, item):
+        temp = Node(item)        
+        if self.rear == None:
+            self.front = self.rear = temp
+            return
+        self.rear.Next = temp
+        self.rear = temp
+    def DeQueue(self):        
+        if self.isEmpty():
+            return
+        temp = self.front
+        self.front = temp.Next
+        if(self.front == None):
+            self.rear = None
+if __name__== '__main__':
+    q = Queue()
+    q.EnQueue(10)
+    q.EnQueue(20)
+    q.EnQueue(30)
+    q.EnQueue(40)
+    q.EnQueue(50)
+    q.EnQueue(60)
+    q.DeQueue()
+    q.DeQueue()
+    q.DeQueue()
+    q.EnQueue(70)
+    q.EnQueue(80)
+    q.EnQueue(90)
+    q.DeQueue()  
+    print("Here is the Queue implementing Linked List")
+    print("Queue Front is :" + str(q.front.Data))
+    print("Queue Rear is:" + str(q.rear.Data))
+#    Output-
+#    Here is the Queue implementing Linked List
+#Queue Front is :50
+#Queue Rear is:90
+    
