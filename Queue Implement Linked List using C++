@@ -1,0 +1,64 @@
+#include <iostream>
+using namespace std;
+struct QNode 
+{
+    int DATA;
+    QNode* NEXT;
+    QNode(int d)
+    {
+        DATA = d;
+        NEXT = NULL;
+    }
+};
+struct Queue 
+{
+    QNode *Front, *Rear;
+    Queue()
+    {
+        Front = Rear = NULL;
+    }
+ 
+    void EnQueue(int x)
+    {
+        QNode* temp = new QNode(x);
+        if (Rear == NULL) 
+        {
+            Front = Rear = temp;
+            return;
+        }
+        Rear->NEXT = temp;
+        Rear = temp;
+    }
+    void DeQueue()
+    {
+        if (Front == NULL)
+            return;
+        QNode* temp = Front;
+        Front = Front->NEXT;
+        if (Front == NULL)
+            Rear = NULL;
+ 
+        delete (temp);
+    }
+};
+int main()
+{
+    cout<<"Here is a Queue implement Linked list:\n";
+    Queue Q;
+    Q.EnQueue(41);
+    Q.EnQueue(42);
+    Q.EnQueue(43);
+    Q.EnQueue(44);
+    Q.DeQueue();
+    Q.DeQueue();
+    Q.EnQueue(45);
+    Q.EnQueue(46);
+    Q.EnQueue(47);
+    Q.DeQueue();
+    cout << "Queue's Front part : " << (Q.Front)->DATA << endl;
+    cout << "Queue's Rear part: " << (Q.Rear)->DATA;
+}
+//Output-
+//Here is a Queue implement Linked list:
+//Queue's Front part : 44
+//Queue's Rear part: 47
