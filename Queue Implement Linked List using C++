@@ -58,7 +58,7 @@ int main()
     cout << "Queue's Front part : " << (Q.Front)->DATA << endl;
     cout << "Queue's Rear part: " << (Q.Rear)->DATA;
 }
-//Output-
+//Output->
 //Here is a Queue implement Linked list:
 //Queue's Front part : 44
 //Queue's Rear part: 47
